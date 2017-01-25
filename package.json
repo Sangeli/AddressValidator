@@ -1,9 +1,9 @@
 {
-  "name": "node-todo",
+  "name": "address-validator",
   "version": "0.0.1",
-  "description": "Simple todo application.",
+  "description": "Address validator.",
   "main": "server.js",
-  "author": "Scotch",
+  "author": "Sangeli",
   "dependencies": {
     "body-parser": "^1.4.3",
     "express": "^4.13.4",
