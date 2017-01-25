@@ -24,17 +24,17 @@
 <!-- SET THE CONTROLLER -->
 <body ng-controller="mainController">
 	<div class="container">
-	<h1>test</h1>
+	<h1>Please Enter Info</h1>
 
-	<form validate class="css-form">
-		<label>First Name: <input type="text" ng-model="user.firstName" required ngPattern="[^A-Za-z]"/></label><br />
-		<label>Last Name: <input type="text" ng-model="user.lastName" required /></label><br />
+	<form name="form" class="css-form">
+		<label>First Name: <input type="text" ng-model="user.firstName" required ng-pattern="reName"/></label><br />
+		<label>Last Name: <input type="text" ng-model="user.lastName" required ng-pattern="reName"/></label><br />
 		<label>E-mail: <input type="email" ng-model="user.email" /></label><br />
-		<label>City: <input type="text" ng-model="user.city" required /></label><br />
-		<label>State: <input type="text" ng-model="user.state" required /></label><br />
-		<label>Zip Code: <input type="text" ng-model="user.zipCode" required /></label><br />
+		<label>City: <input type="text" ng-model="user.city" required ng-pattern="reWords"/></label><br />
+		<label>State: <input type="text" ng-model="user.state" required ng-pattern="reName"/></label><br />
+		<label>Zip Code: <input type="text" ng-model="user.zipCode" required ng-pattern="reZipCode"/></label><br />
     <input type="submit" ng-click="send(user)" value="Submit" />
-    <div>{{message}}</div>
+    <h2>{{message}}</h2>
 	 </form>
 	</div>
 </body>

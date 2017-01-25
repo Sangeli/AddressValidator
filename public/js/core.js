@@ -3,14 +3,21 @@ angular.module('addressValidator', [])
   $scope.user = {};
   $scope.message = '';
 
+  $scope.reName = /[A-Za-z]+/;
+  $scope.reWords = /[A-Za-z ]+/;
+  $scope.reZipCode = /^\d{5}$/;
+
   $scope.send = (user) => {
-    $http.post('/users', {user}).then( (response) => {
-      console.log('status', response.status);
-      $scope.message = response.data.message;
-    }, (err) => {
-      console.log('err', err.data);
-      $scope.message = err.data.message
-    })
+    if ($scope.form.$valid) {
+      $http.post('/users', {user}).then( (response) => {
+        $scope.message = response.data.message;
+      }, (err) => {
+        $scope.message = err.data.message
+      });
+    } else {
+      $scope.message = 'Form does not conform to requirements';
+    }
   }
+
 
 }]);
