@@ -28,10 +28,8 @@ app.post('/users', (req, res) => {
   var user = req.body.user;
   util.validate(user).then( data => {
     if ('city_states' in data) {
-      console.log('success', data);
       res.send({message: 'Thank You!'});
     } else {
-      console.log('err', data.reason);
       res.status(500).send({message: data.reason});
     }
   });
