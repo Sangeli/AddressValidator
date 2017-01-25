@@ -5,6 +5,7 @@ var port = process.env.PORT || 8080; 				// set the port
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var util = require('./util');
 
 // configuration ===============================================================
 
@@ -18,10 +19,23 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 
 
 
-app.get('*', function (req, res) {
-    res.sendFile(__dirname + '/public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+app.get('*', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
 
+
+app.post('/users', (req, res) => {
+  var user = req.body.user;
+  util.validate(user).then( data => {
+    if ('city_states' in data) {
+      console.log('success', data);
+      res.send({message: 'Thank You!'});
+    } else {
+      console.log('err', data.reason);
+      res.status(500).send({message: data.reason});
+    }
+  });
+});
 
 
 
